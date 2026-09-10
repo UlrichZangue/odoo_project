@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_support_category_tree" model="ir.ui.view"><field name="name">client.support.category.tree</field><field name="model">client.support.category</field><field name="arch" type="xml"><tree><field name="name"/><field name="manager_id"/><field name="active"/></tree></field></record>
+  <record id="view_support_category_form" model="ir.ui.view"><field name="name">client.support.category.form</field><field name="model">client.support.category</field><field name="arch" type="xml"><form><sheet><group><field name="name"/><field name="manager_id"/><field name="color" widget="color_picker"/><field name="active"/></group><field name="description" placeholder="Périmètre de cette catégorie…"/></sheet></form></field></record>
+  <record id="action_support_category" model="ir.actions.act_window"><field name="name">Catégories</field><field name="res_model">client.support.category</field><field name="view_mode">tree,form</field></record>
+</odoo>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="module_category_client_support" model="ir.module.category">
+    <field name="name">Support client</field>
+    <field name="sequence">35</field>
+  </record>
+  <record id="group_support_user" model="res.groups">
+    <field name="name">Utilisateur support</field>
+    <field name="category_id" ref="module_category_client_support"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+  <record id="group_support_consultant" model="res.groups">
+    <field name="name">Consultant support</field>
+    <field name="category_id" ref="module_category_client_support"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+  <record id="group_support_manager" model="res.groups">
+    <field name="name">Responsable support</field>
+    <field name="category_id" ref="module_category_client_support"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+
+  <record id="rule_ticket_user_own" model="ir.rule">
+    <field name="name">Tickets créés par l'utilisateur</field>
+    <field name="model_id" ref="model_client_support_ticket"/>
+    <field name="groups" eval="[(4, ref('group_support_user'))]"/>
+    <field name="domain_force">[('create_uid', '=', user.id)]</field>
+  </record>
+  <record id="rule_ticket_consultant_assigned" model="ir.rule">
+    <field name="name">Tickets assignés au consultant</field>
+    <field name="model_id" ref="model_client_support_ticket"/>
+    <field name="groups" eval="[(4, ref('group_support_consultant'))]"/>
+    <field name="domain_force">[('user_id', '=', user.id)]</field>
+  </record>
+  <record id="rule_ticket_manager_all" model="ir.rule">
+    <field name="name">Tous les tickets pour le responsable</field>
+    <field name="model_id" ref="model_client_support_ticket"/>
+    <field name="groups" eval="[(4, ref('group_support_manager'))]"/>
+    <field name="domain_force">[(1, '=', 1)]</field>
+  </record>
+  <record id="rule_intervention_user_own" model="ir.rule">
+    <field name="name">Interventions des tickets de l'utilisateur</field>
+    <field name="model_id" ref="model_client_support_intervention"/>
+    <field name="groups" eval="[(4, ref('group_support_user'))]"/>
+    <field name="domain_force">[('ticket_id.create_uid', '=', user.id)]</field>
+  </record>
+  <record id="rule_intervention_consultant_assigned" model="ir.rule">
+    <field name="name">Interventions assignées au consultant</field>
+    <field name="model_id" ref="model_client_support_intervention"/>
+    <field name="groups" eval="[(4, ref('group_support_consultant'))]"/>
+    <field name="domain_force">[('user_id', '=', user.id)]</field>
+  </record>
+  <record id="rule_intervention_manager_all" model="ir.rule">
+    <field name="name">Toutes les interventions pour le responsable</field>
+    <field name="model_id" ref="model_client_support_intervention"/>
+    <field name="groups" eval="[(4, ref('group_support_manager'))]"/>
+    <field name="domain_force">[(1, '=', 1)]</field>
+  </record>
+</odoo>

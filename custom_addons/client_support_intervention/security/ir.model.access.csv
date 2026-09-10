@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ticket_user,client.support.ticket user,model_client_support_ticket,group_support_user,1,1,1,0
+access_ticket_consultant,client.support.ticket consultant,model_client_support_ticket,group_support_consultant,1,1,0,0
+access_ticket_manager,client.support.ticket manager,model_client_support_ticket,group_support_manager,1,1,1,1
+access_intervention_user,client.support.intervention user,model_client_support_intervention,group_support_user,1,0,0,0
+access_intervention_consultant,client.support.intervention consultant,model_client_support_intervention,group_support_consultant,1,1,1,0
+access_intervention_manager,client.support.intervention manager,model_client_support_intervention,group_support_manager,1,1,1,1
+access_category_user,client.support.category user,model_client_support_category,group_support_user,1,0,0,0
+access_category_consultant,client.support.category consultant,model_client_support_category,group_support_consultant,1,0,0,0
+access_category_manager,client.support.category manager,model_client_support_category,group_support_manager,1,1,1,1
+

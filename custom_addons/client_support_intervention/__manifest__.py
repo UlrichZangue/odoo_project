@@ -1,0 +1,23 @@
+{
+    "name": "Support et interventions clients",
+    "summary": "Gestion des tickets d'assistance et des interventions clients",
+    "version": "16.0.1.0.0",
+    "category": "Services/Helpdesk",
+    "author": "Ulrich Zangue",
+    "license": "LGPL-3",
+    "depends": ["base", "mail", "contacts", "web"],
+    "data": [
+        "security/support_security.xml",
+        "security/ir.model.access.csv",
+        "data/support_sequence.xml",
+        "data/support_cron.xml",
+        "views/support_category_views.xml",
+        "views/support_ticket_views.xml",
+        "views/support_intervention_views.xml",
+        "views/support_menus.xml",
+        "report/intervention_report.xml",
+    ],
+    "demo": ["demo/support_demo.xml"],
+    "application": True,
+    "installable": True,
+}
