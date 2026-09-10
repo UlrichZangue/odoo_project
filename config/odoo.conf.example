@@ -1,0 +1,9 @@
+[options]
+# Copy to odoo.conf (ignored) and replace placeholders locally.
+addons_path = /mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons
+db_host = db
+db_port = 5432
+db_user = CHANGE_ME
+db_password = CHANGE_ME
+admin_passwd = CHANGE_ME
+
