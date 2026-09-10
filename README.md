@@ -28,9 +28,7 @@ docker compose up -d
 docker compose ps
 ```
 
-Ouvrir `http://localhost:8069`. La base indiquée par `POSTGRES_DB` est ciblée au démarrage. Pour une première base, suivre l'assistant Odoo avec le mot de passe maître défini localement dans `.env`.
-
-Dans **Applications**, activer si nécessaire le mode développeur, cliquer sur **Mettre à jour la liste des applications**, rechercher « Support et interventions clients », puis installer le module. Attribuer ensuite exactement l'un des groupes Support depuis la fiche utilisateur.
+Ouvrir `http://localhost:8069`. Au premier lancement, Odoo initialise automatiquement la base indiquée par `POSTGRES_DB` et installe le module « Support et interventions clients ». Cette opération peut prendre une à deux minutes. Connectez-vous ensuite avec le compte administrateur Odoo créé pendant l'initialisation standard de l'image, puis attribuez exactement l'un des groupes Support depuis chaque fiche utilisateur.
 
 Les données d'exemple n'existent que si la base est créée avec les données de démonstration. Elles ne contiennent aucun compte ni mot de passe. Le détail des rôles est dans [la documentation fonctionnelle](docs/functional-guide.md).
 
@@ -70,4 +68,3 @@ La validation client est une attestation nominative horodatée, pas une signatur
 ## Licence
 
 Ce module est distribué sous LGPL-3. Le fichier [LICENSE](LICENSE) conserve le texte de licence applicable. Odoo est une dépendance externe et demeure soumis à ses propres droits d'auteur et licences.
-
