@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+  <record id="demo_partner_client" model="res.partner"><field name="name">Client Démonstration</field><field name="is_company">True</field></record>
+  <record id="demo_category_incident" model="client.support.category"><field name="name">Incident fonctionnel</field><field name="description">Dysfonctionnement rencontré par un utilisateur.</field><field name="color">2</field></record>
+  <record id="demo_ticket_login" model="client.support.ticket"><field name="title">Accès impossible au portail</field><field name="description">Exemple de ticket livré uniquement en mode démonstration.</field><field name="partner_id" ref="demo_partner_client"/><field name="category_id" ref="demo_category_incident"/><field name="priority">2</field></record>
+</odoo>
+
