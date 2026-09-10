@@ -43,11 +43,10 @@
     <field name="arch" type="xml"><kanban default_group_by="state" class="o_kanban_small_column"><field name="priority"/><field name="state"/><field name="partner_id"/><field name="user_id"/><field name="deadline"/>
       <templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click {{ record.priority.raw_value == '3' ? 'border-danger' : '' }}">
         <div class="o_kanban_record_top"><strong><field name="name"/> — <field name="title"/></strong><field name="priority" widget="priority"/></div>
-        <div><i class="fa fa-building-o"/> <field name="partner_id"/></div><div><i class="fa fa-user"/> <field name="user_id"/></div>
-        <div t-if="record.deadline.raw_value"><i class="fa fa-clock-o"/> <field name="deadline"/></div>
+        <div><i class="fa fa-building-o" title="Client"/> <field name="partner_id"/></div><div><i class="fa fa-user" title="Consultant"/> <field name="user_id"/></div>
+        <div t-if="record.deadline.raw_value"><i class="fa fa-clock-o" title="Échéance"/> <field name="deadline"/></div>
       </div></t></templates>
     </kanban></field>
   </record>
   <record id="action_support_ticket" model="ir.actions.act_window"><field name="name">Tickets</field><field name="res_model">client.support.ticket</field><field name="view_mode">kanban,tree,form</field><field name="search_view_id" ref="view_support_ticket_search"/><field name="context">{'search_default_open': 1}</field></record>
 </odoo>
-
