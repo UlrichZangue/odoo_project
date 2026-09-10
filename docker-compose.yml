@@ -26,7 +26,23 @@ services:
       PORT: 5432
       USER: ${POSTGRES_USER:-odoo}
       PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
-    command: ["odoo", "--database=${POSTGRES_DB:-odoo}", "--db_host=db", "--db_port=5432", "--db_user=${POSTGRES_USER:-odoo}", "--db_password=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}", "--admin-passwd=${ODOO_ADMIN_PASSWORD:?Set ODOO_ADMIN_PASSWORD in .env}", "--addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons"]
+      ODOO_DATABASE: ${POSTGRES_DB:-odoo}
+      ODOO_ADMIN_PASSWORD: ${ODOO_ADMIN_PASSWORD:?Set ODOO_ADMIN_PASSWORD in .env}
+    command:
+      - /bin/bash
+      - -c
+      - |
+        printf '%s\n' \
+          '[options]' \
+          "admin_passwd = $${ODOO_ADMIN_PASSWORD}" \
+          "db_host = $${HOST}" \
+          "db_port = $${PORT}" \
+          "db_user = $${USER}" \
+          "db_password = $${PASSWORD}" \
+          "db_name = $${ODOO_DATABASE}" \
+          'addons_path = /mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons' \
+          > /tmp/odoo-runtime.conf
+        exec odoo --config=/tmp/odoo-runtime.conf --init=client_support_intervention
     volumes:
       - odoo_data:/var/lib/odoo
       - ./custom_addons:/mnt/extra-addons:ro
@@ -39,4 +55,3 @@ services:
 volumes:
   postgres_data:
   odoo_data:
-
