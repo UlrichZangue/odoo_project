@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="action_report_support_intervention" model="ir.actions.report"><field name="name">Rapport d'intervention</field><field name="model">client.support.intervention</field><field name="report_type">qweb-pdf</field><field name="report_name">client_support_intervention.report_support_intervention</field><field name="report_file">client_support_intervention.report_support_intervention</field><field name="binding_model_id" ref="model_client_support_intervention"/><field name="binding_type">report</field><field name="print_report_name">'Intervention - %s' % (object.name)</field></record>
+  <template id="report_support_intervention"><t t-call="web.html_container"><t t-foreach="docs" t-as="o"><t t-call="web.external_layout"><div class="page"><h2>Rapport d'intervention <span t-field="o.name"/></h2>
+    <div class="row"><div class="col-6"><strong>Ticket :</strong> <span t-field="o.ticket_id.name"/><br/><strong>Client :</strong> <span t-field="o.partner_id"/><br/><strong>Consultant :</strong> <span t-field="o.user_id"/></div><div class="col-6"><strong>Type :</strong> <span t-field="o.intervention_type"/><br/><strong>Planifiée :</strong> <span t-field="o.planned_date"/><br/><strong>Début / fin :</strong> <span t-field="o.start_date"/> — <span t-field="o.end_date"/></div></div>
+    <h3>Diagnostic</h3><p t-field="o.diagnostic"/><h3>Actions réalisées</h3><p t-field="o.actions_done"/><h3>Résultat</h3><p t-field="o.result"/>
+    <div class="mt32"><h3>Validation du client</h3><p>Nom / signature : <span t-field="o.client_validation"/></p><p>Date : <span t-field="o.validation_date"/></p><div style="height: 60px; border-bottom: 1px solid #777;"/></div>
+  </div></t></t></t></template>
+</odoo>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="menu_support_root" name="Support client" sequence="20" groups="group_support_user,group_support_consultant,group_support_manager"/>
+  <menuitem id="menu_support_operations" name="Opérations" parent="menu_support_root" sequence="10"/>
+  <menuitem id="menu_support_tickets" name="Tickets" parent="menu_support_operations" action="action_support_ticket" sequence="10"/>
+  <menuitem id="menu_support_interventions" name="Interventions" parent="menu_support_operations" action="action_support_intervention" sequence="20"/>
+  <menuitem id="menu_support_configuration" name="Configuration" parent="menu_support_root" sequence="90" groups="group_support_manager"/>
+  <menuitem id="menu_support_categories" name="Catégories" parent="menu_support_configuration" action="action_support_category"/>
+</odoo>
+
